@@ -1,27 +1,27 @@
 #include <iostream>
 using namespace std;
 
-int recursiveFibonacci(int n){
-  if (n<=1)
-  return n;
-  return recursiveFibonacci(n-1)+recursiveFibonacci(n-2);
-}
-int fibonacci(int n){
-  int a= 0, b= 1, c= 0;
-  for (int i= 1; i<n; i++){
-    c= a+b;
-    a= b;
-    b=c;
+bool leapYear(int x){
+  bool leap= false;
+  if(x%4==0){
+    if(x%100==0){
+      if(x%400==0){
+        leap= true;
+      }
+      leap= false;
+    }
+    leap= true;
   }
-  return c;
+  return leap;
 }
-
 int main(){
-  int n;
-  cout<<"Enter a positive integer: ";
-  cin>> n;
-  cout<<recursiveFibonacci(n);
-  cout<<"\n";
-  cout<<fibonacci(n);
+  int year;
+  cout<<"Enter the year you want: ";
+  cin>>year;
+  cout<<"Is given year a leap year? ";
+  if(leapYear(year))
+    cout <<"True";
+  else
+    cout<<"False";
   return 0;
 }
